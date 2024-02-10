@@ -43,3 +43,16 @@ npm run test
 ```
 npm run dev
 ```
+
+
+## Guide to installing Docker Desktop and using commands to launch Docker services.
+
+Docker Configuracion:
+1.	Required tool
+Docker guide installation: https://arquitectoit.com/docker/instalar-docker-desktop/
+2.	Download the general Repository where you will have the backend, frontend and Docker       configurations integrated:
+https://github.com/fredtenesaca/SUPLAIER-BAIER-GENERAL.git
+
+3.	The corresponding docker files, Dockerfile and docker-compose.yml, are already configured in the repository.
+4.	Now, you just have to run the docker compose up command to raise the docker services from the command console.
+5.	Now you can test each of the docker services in your browser by clicking on their corresponding links.
