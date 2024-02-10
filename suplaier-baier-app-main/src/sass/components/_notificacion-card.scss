@@ -1,0 +1,35 @@
+.notificacionCard{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-style: solid;
+  border-color: $color-grey-light-3;
+  border-radius: 5px;
+  padding: 2rem 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__icon {
+    color: $color-blue;
+    margin-right: 0.5rem;
+
+    &--red {
+      color: $color-red;
+    }
+  }
+
+}
+
+.notificacionDot {
+  align-items: center;
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  height: 1.5rem;
+  justify-content: center;
+  position: absolute;
+  right: 0rem;
+  width: 1.5rem;
+}
