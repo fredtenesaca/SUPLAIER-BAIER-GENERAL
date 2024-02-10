@@ -1,0 +1,64 @@
+version: "3.8"
+
+services:
+  db:
+    # aways alive 
+    container_name: db
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'DbContabilly'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db4:/var/lib/mysql
+    networks:
+      - mired
+  backend:
+    restart: always
+    depends_on:
+      - db
+    networks:
+      - mired
+    container_name: backend
+    build: 
+      context: suplaier-baier-api
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+  frontend:
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - mired
+    container_name: frontend
+    build: 
+      context: suplaier-baier-app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '8081:80'
+    expose:
+      - '8081'
+    networks:
+      - mired
+volumes:
+  my-db4:
+networks:
+  mired:
+    driver: bridge
+    name: mired
